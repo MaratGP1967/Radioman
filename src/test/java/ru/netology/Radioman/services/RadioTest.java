@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class RadioTest {
-
     @Test
-    public void shouldSetRadioStationNumber() {
+    public void shouldSetRadioStationDefNumber() {
+
         Radio config = new Radio();
 
         config.setCurrentRadioStationNumber(5);
@@ -18,7 +18,8 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldNotSetRadioStationNumberAboveMax() {
+    public void shouldNotSetRadioStationDefNumber() {
+
         Radio config = new Radio();
 
         config.setCurrentRadioStationNumber(10);
@@ -29,9 +30,35 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    Radio config = new Radio(30);
+
+    @Test
+    public void shouldSetRadioStationNumber() {
+        //Radio config = new Radio();
+
+        config.setCurrentRadioStationNumber(29);
+
+        int expected = 29;
+        int actual = config.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetRadioStationNumberAboveMax() {
+        //Radio config = new Radio(10);
+
+        config.setCurrentRadioStationNumber(30);
+
+        int expected = 0;
+        int actual = config.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test
     public void shouldNotSetRadioStationNumberBelowMin() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
         config.setCurrentRadioStationNumber(-1);
 
@@ -43,7 +70,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextRadioStationNumber() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
         config.setCurrentRadioStationNumber(4);
         config.nextRadioStationNumber();
@@ -56,9 +83,9 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextRadioStationNumberFromMaxToMin() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
-        config.setCurrentRadioStationNumber(9);
+        config.setCurrentRadioStationNumber(29);
         config.nextRadioStationNumber();
 
         int expected = 0;
@@ -69,7 +96,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetPrefRadioStationNumber() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
         config.setCurrentRadioStationNumber(4);
         config.prevRadioStationNumber();
@@ -82,12 +109,12 @@ public class RadioTest {
 
     @Test
     public void shouldSetPrefRadioStationNumberFromMinToMax() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
         config.setCurrentRadioStationNumber(0);
         config.prevRadioStationNumber();
 
-        int expected = 9;
+        int expected = 29;
         int actual = config.getCurrentRadioStationNumber();
 
         Assertions.assertEquals(expected, actual);
@@ -95,7 +122,7 @@ public class RadioTest {
 
     @Test
     public void shouldIncreaseSoundVolume() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
         config.currentSoundVolume = 4;
         config.increaseSoundVolume();
@@ -108,12 +135,12 @@ public class RadioTest {
 
     @Test
     public void shouldNotIncreaseSoundVolumeAboveMax() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
-        config.currentSoundVolume = 10;
+        config.currentSoundVolume = 100;
         config.increaseSoundVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = config.getCurrentSoundVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -121,7 +148,7 @@ public class RadioTest {
 
     @Test
     public void shouldDecreaseSoundVolume() {
-        Radio config = new Radio();
+        //Radio config = new Radio(10);
 
         config.currentSoundVolume = 4;
         config.decreaseSoundVolume();
@@ -133,8 +160,8 @@ public class RadioTest {
     }
 
     @Test
-    public void shouldDecreaseSoundVolumeBelowMin() {
-        Radio config = new Radio();
+    public void shouldNotDecreaseSoundVolumeBelowMin() {
+        //Radio config = new Radio(10);
 
         config.currentSoundVolume = 0;
         config.decreaseSoundVolume();
