@@ -1,7 +1,13 @@
 package ru.netology.Radioman.services;
 
-public class Radio {
+//import lombok.AllArgsConstructor;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
 
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Data
+public class Radio {
     int numberOfRadioStations = 10;
     int radioStationNumberMax;
     private int currentRadioStationNumber;
@@ -12,31 +18,27 @@ public class Radio {
     }
 
     public Radio(int numberOfRadioStations) {
-        this.radioStationNumberMax = numberOfRadioStations - 1;
+        this.radioStationNumberMax= numberOfRadioStations-1;
     }
 
     public int getCurrentRadioStationNumber() {
-
         return currentRadioStationNumber;
     }
 
     public int getCurrentSoundVolume() {
-
         return currentSoundVolume;
     }
 
-    // direct input of the station number
-    public void setCurrentRadioStationNumber(int newRadioStationNumber) {
-        if (newRadioStationNumber < 0) {
+    public void setCurrentRadioStationNumber(int currentRadioStationNumber) {
+        if (currentRadioStationNumber < 0) {
             return;
         }
-        if (newRadioStationNumber > radioStationNumberMax) {
+        if (currentRadioStationNumber > radioStationNumberMax) {
             return;
         }
-        currentRadioStationNumber = newRadioStationNumber;
-    }
 
-    //next radio station
+        this.currentRadioStationNumber = currentRadioStationNumber;
+    }
     public void nextRadioStationNumber() {
         currentRadioStationNumber++;
         if (currentRadioStationNumber > radioStationNumberMax) {
@@ -44,15 +46,12 @@ public class Radio {
         }
     }
 
-    //previous radio station
     public void prevRadioStationNumber() {
         currentRadioStationNumber--;
         if (currentRadioStationNumber < 0) {
             currentRadioStationNumber = radioStationNumberMax;
         }
     }
-
-    //increasing the sound volume
     public void increaseSoundVolume() {
         if (currentSoundVolume < 100) {
             currentSoundVolume++;
@@ -61,7 +60,6 @@ public class Radio {
         }
     }
 
-    //reducing the volume of the sound
     public void decreaseSoundVolume() {
         if (currentSoundVolume > 0) {
             currentSoundVolume--;
@@ -70,4 +68,6 @@ public class Radio {
         }
     }
 
+
 }
+
