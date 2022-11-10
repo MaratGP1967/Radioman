@@ -2,10 +2,10 @@ package ru.netology.Radioman.services;
 
 public class Radio {
 
-    int numberOfRadioStations = 10;
-    int radioStationNumberMax;
+    protected int numberOfRadioStations = 10;
+    protected int radioStationNumberMax;
     private int currentRadioStationNumber;
-    int currentSoundVolume;
+    private int currentSoundVolume;
 
     public Radio() {
         this.radioStationNumberMax = this.numberOfRadioStations - 1;
@@ -34,6 +34,10 @@ public class Radio {
             return;
         }
         currentRadioStationNumber = newRadioStationNumber;
+    }
+
+    public void setCurrentSoundVolume(int newCurrentSoundVolume) {
+        currentSoundVolume = newCurrentSoundVolume;
     }
 
     //next radio station

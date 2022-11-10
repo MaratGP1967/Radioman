@@ -124,7 +124,7 @@ public class RadioTest {
     public void shouldIncreaseSoundVolume() {
         //Radio config = new Radio(10);
 
-        config.currentSoundVolume = 4;
+        config.setCurrentSoundVolume(4);
         config.increaseSoundVolume();
 
         int expected = 5;
@@ -137,7 +137,7 @@ public class RadioTest {
     public void shouldNotIncreaseSoundVolumeAboveMax() {
         //Radio config = new Radio(10);
 
-        config.currentSoundVolume = 100;
+        config.setCurrentSoundVolume(100);
         config.increaseSoundVolume();
 
         int expected = 100;
@@ -150,7 +150,7 @@ public class RadioTest {
     public void shouldDecreaseSoundVolume() {
         //Radio config = new Radio(10);
 
-        config.currentSoundVolume = 4;
+        config.setCurrentSoundVolume(4);
         config.decreaseSoundVolume();
 
         int expected = 3;
@@ -163,7 +163,7 @@ public class RadioTest {
     public void shouldNotDecreaseSoundVolumeBelowMin() {
         //Radio config = new Radio(10);
 
-        config.currentSoundVolume = 0;
+        config.setCurrentSoundVolume(0);
         config.decreaseSoundVolume();
 
         int expected = 0;
