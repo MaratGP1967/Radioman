@@ -8,10 +8,10 @@ package ru.netology.Radioman.services;
 //@AllArgsConstructor
 //@Data
 public class Radio {
-    int numberOfRadioStations = 10;
-    int radioStationNumberMax;
+    protected int numberOfRadioStations = 10;
+    protected int radioStationNumberMax;
     private int currentRadioStationNumber;
-    int currentSoundVolume;
+    private int currentSoundVolume;
 
     public Radio() {
         this.radioStationNumberMax = this.numberOfRadioStations - 1;
@@ -25,10 +25,6 @@ public class Radio {
         return currentRadioStationNumber;
     }
 
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
-    }
-
     public void setCurrentRadioStationNumber(int currentRadioStationNumber) {
         if (currentRadioStationNumber < 0) {
             return;
@@ -36,9 +32,17 @@ public class Radio {
         if (currentRadioStationNumber > radioStationNumberMax) {
             return;
         }
-
         this.currentRadioStationNumber = currentRadioStationNumber;
     }
+
+    public int getCurrentSoundVolume() {
+        return currentSoundVolume;
+    }
+
+    public void setCurrentSoundVolume(int currentSoundVolume) {
+        this.currentSoundVolume = currentSoundVolume;
+    }
+
     public void nextRadioStationNumber() {
         currentRadioStationNumber++;
         if (currentRadioStationNumber > radioStationNumberMax) {
