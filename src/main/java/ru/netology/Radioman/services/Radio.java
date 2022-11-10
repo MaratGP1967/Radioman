@@ -2,7 +2,7 @@ package ru.netology.Radioman.services;
 
 public class Radio {
     private int currentRadioStationNumber;
-    int currentSoundVolume;
+    private int currentSoundVolume;
 
     public int getCurrentRadioStationNumber() {
         return currentRadioStationNumber;
@@ -23,6 +23,16 @@ public class Radio {
         currentRadioStationNumber = newRadioStationNumber;
     }
 
+    public void setCurrentSoundVolume(int newCurrentSoundVolume) {
+        if (newCurrentSoundVolume < 0) {
+            return;
+        }
+        if (newCurrentSoundVolume > 10) {
+            return;
+        }
+        currentSoundVolume = newCurrentSoundVolume;
+    }
+
     //next radio station
     public void nextRadioStationNumber() {
         currentRadioStationNumber++;
@@ -34,7 +44,7 @@ public class Radio {
     //previous radio station
     public void prevRadioStationNumber() {
         currentRadioStationNumber--;
-        if (currentRadioStationNumber  < 0) {
+        if (currentRadioStationNumber < 0) {
             currentRadioStationNumber = 9;
         }
     }

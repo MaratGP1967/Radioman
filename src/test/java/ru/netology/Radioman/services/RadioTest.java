@@ -97,7 +97,7 @@ public class RadioTest {
     public void shouldIncreaseSoundVolume() {
         Radio config = new Radio();
 
-        config.currentSoundVolume = 4;
+        config.setCurrentSoundVolume(4);
         config.increaseSoundVolume();
 
         int expected = 5;
@@ -110,7 +110,7 @@ public class RadioTest {
     public void shouldNotIncreaseSoundVolumeAboveMax() {
         Radio config = new Radio();
 
-        config.currentSoundVolume = 10;
+        config.setCurrentSoundVolume(10);
         config.increaseSoundVolume();
 
         int expected = 10;
@@ -123,7 +123,7 @@ public class RadioTest {
     public void shouldDecreaseSoundVolume() {
         Radio config = new Radio();
 
-        config.currentSoundVolume = 4;
+        config.setCurrentSoundVolume(4);
         config.decreaseSoundVolume();
 
         int expected = 3;
@@ -136,10 +136,36 @@ public class RadioTest {
     public void shouldDecreaseSoundVolumeBelowMin() {
         Radio config = new Radio();
 
-        config.currentSoundVolume = 0;
+        config.setCurrentSoundVolume(0);
         config.decreaseSoundVolume();
 
         int expected = 0;
+        int actual = config.getCurrentSoundVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSoundVolumeBeNegative() {
+        Radio config = new Radio();
+
+        config.setCurrentSoundVolume(5);
+        config.setCurrentSoundVolume(-5);
+
+        int expected = 5;
+        int actual = config.getCurrentSoundVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSoundVolumeBeMoreThen() {
+        Radio config = new Radio();
+
+        config.setCurrentSoundVolume(5);
+        config.setCurrentSoundVolume(12);
+
+        int expected = 5;
         int actual = config.getCurrentSoundVolume();
 
         Assertions.assertEquals(expected, actual);
